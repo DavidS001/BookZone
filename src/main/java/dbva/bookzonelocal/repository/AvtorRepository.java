@@ -1,9 +1,0 @@
-package dbva.bookzonelocal.repository;
-
-import dbva.bookzonelocal.model.Avtor;
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
-
-@Repository
-public interface AvtorRepository extends JpaRepository<Avtor,Integer> {
-}
