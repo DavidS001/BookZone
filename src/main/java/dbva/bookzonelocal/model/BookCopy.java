@@ -6,7 +6,7 @@ import javax.persistence.*;
 
 @Entity
 @Data
-@Table(name = "primerok")
+@Table(name = "primerok", schema = "project")
 public class BookCopy {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

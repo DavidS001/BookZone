@@ -11,7 +11,7 @@ import java.util.Objects;
 
 @Entity
 @Data
-@Table(name = "kniga")
+@Table(name = "kniga", schema = "project")
 public class Book {
 
     @Id
@@ -19,6 +19,7 @@ public class Book {
     private String id;
     @Column(name = "naslov", nullable = false)
     private String title;
+    @Column(name = "rejting", nullable = false)
     private Integer rating;
     @Column(name = "dali_se_prodava", nullable = false)
     private Boolean forSale;

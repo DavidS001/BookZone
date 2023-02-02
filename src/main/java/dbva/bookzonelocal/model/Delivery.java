@@ -7,14 +7,14 @@ import java.time.LocalDate;
 
 @Entity
 @Data
-@Table(name = "dostava")
+@Table(name = "dostava", schema = "project")
 public class Delivery {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_dostava",nullable = false)
     private Integer id;
-    @Column(name = "datum_naracka",nullable = false)
+    @Column(name = "datum_dostava",nullable = false)
     private LocalDate shippingDate;
     @Column(name = "adresa",nullable = false, length = 50)
     private String address;

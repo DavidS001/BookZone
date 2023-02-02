@@ -7,7 +7,7 @@ import java.time.LocalDate;
 
 @Entity
 @Data
-@Table(name = "naracka")
+@Table(name = "naracka", schema = "project")
 public class Order {
 
     @Id
