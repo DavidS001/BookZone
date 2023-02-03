@@ -19,12 +19,24 @@ public class Book {
     private String id;
     @Column(name = "naslov", nullable = false)
     private String title;
-    @Column(name = "rejting", nullable = false)
+    @Column(name = "rejting", nullable = true)
     private Integer rating;
     @Column(name = "dali_se_prodava", nullable = false)
     private Boolean forSale;
     @Column(name = "cena", nullable = false)
     private Integer price;
+
+    public Book(String isbn, String title, Integer rating, Boolean forSale, Integer price) {
+        this.id = isbn;
+        this.title = title;
+        this.rating = rating;
+        this.forSale = forSale;
+        this.price = price;
+    }
+
+    public Book() {
+
+    }
     //TODO: Da se dodade izd_id od izdavacka kukja.
 
     @Override

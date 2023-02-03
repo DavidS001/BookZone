@@ -6,6 +6,7 @@
     <title>Title</title>
 </head>
 <body>
+<a th:href="@{'/books/add-book'}" class="btn btn-primary btn-lg">Add a new book</a>
 <table class="table table-striped my-4">
     <thead>
     <tr>
@@ -30,7 +31,7 @@
                 </form>
             </th:block>
             <th:block >
-                <a
+                <a th:href="@{'/books/{id}/edit-book' (id=${book.getId()})}"
                    class="btn btn-sm btn-info edit-product">
                     <i class="fa fa-trash">Edit</i>
                 </a>
