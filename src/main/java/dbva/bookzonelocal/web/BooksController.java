@@ -42,7 +42,7 @@ public class BooksController {
         return "master-template";
     }
 
-    @PostMapping("/books/save")
+    @PostMapping("/books")
     public String save(@RequestParam String isbn,
                        @RequestParam String title,
                        @RequestParam(required = false) Integer rating,
@@ -52,7 +52,7 @@ public class BooksController {
         return "redirect:/books";
     }
 
-    @PostMapping("/books/{id}/edit")
+    @PostMapping("/books/{id}")
     public String edit(@PathVariable String id,
                        @RequestParam String isbn,
                        @RequestParam String title,
