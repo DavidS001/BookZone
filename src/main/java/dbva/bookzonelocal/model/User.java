@@ -25,5 +25,17 @@ public class User {
     private LocalDate membershipDate;
     @Column(name = "lozinka",nullable = false)
     private String password;
+
+    public User(String name,String surname,String telephoneNumber,LocalDate membershipDate,String password) {
+        this.name=name;
+        this.surname=surname;
+        this.telephoneNumber=telephoneNumber;
+        this.membershipDate=membershipDate;
+        this.password=password;
+    }
+
+    public User() {
+
+    }
     //TODO: da se stave nadvoresen kluc od Tip
 }
