@@ -25,7 +25,7 @@ public class BooksController {
         this.wroteService = wroteService;
     }
 
-    @GetMapping("/books")
+    @GetMapping({"/books","/"})
     public String showBooks(Model model){
         List<Book> books = this.bookService.listAll();
         HashMap<String,String> authorsOfBooks = this.wroteService.findAuthorsOfBooks();

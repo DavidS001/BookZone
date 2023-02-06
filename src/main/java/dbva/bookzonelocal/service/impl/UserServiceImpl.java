@@ -3,6 +3,7 @@ package dbva.bookzonelocal.service.impl;
 import dbva.bookzonelocal.model.Type;
 import dbva.bookzonelocal.model.User;
 import dbva.bookzonelocal.model.exceptions.InvalidUserIdException;
+import dbva.bookzonelocal.repository.TypeRepository;
 import dbva.bookzonelocal.repository.UserRepository;
 import dbva.bookzonelocal.service.UserService;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -19,10 +20,12 @@ public class UserServiceImpl implements UserService, UserDetailsService {
 
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
+    private final TypeRepository typeRepository;
 
-    public UserServiceImpl(UserRepository userRepository, PasswordEncoder passwordEncoder) {
+    public UserServiceImpl(UserRepository userRepository, PasswordEncoder passwordEncoder, TypeRepository typeRepository) {
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
+        this.typeRepository = typeRepository;
     }
 
     @Override
@@ -34,7 +37,7 @@ public class UserServiceImpl implements UserService, UserDetailsService {
         return org.springframework.security.core.userdetails.User.builder()
                 .username(user.getName())
                 .password(user.getPassword())
-                .authorities("ROLE_USER")
+                .authorities(user.getType().getName())
                 .build();
     }
 
@@ -50,9 +53,10 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     }
 
     @Override
-    public User create(String name, String password, String surname, String phoneNumber, LocalDate joinedDate) {
+    public User create(String name, String password, String surname, String phoneNumber, LocalDate joinedDate,Integer type) {
         String encodedPassword = this.passwordEncoder.encode(password);
-        User user = new User(name,surname,phoneNumber,joinedDate,password);
+        Type userType = this.typeRepository.findById(type).orElseThrow();
+        User user = new User(name,surname,phoneNumber,joinedDate,password,userType);
         return this.userRepository.save(user);
     }
 

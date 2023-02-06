@@ -25,13 +25,17 @@ public class User {
     private LocalDate membershipDate;
     @Column(name = "lozinka",nullable = false)
     private String password;
+    @ManyToOne
+    @JoinColumn(name = "tip_id")
+    private Type type;
 
-    public User(String name,String surname,String telephoneNumber,LocalDate membershipDate,String password) {
+    public User(String name,String surname,String telephoneNumber,LocalDate membershipDate,String password,Type type) {
         this.name=name;
         this.surname=surname;
         this.telephoneNumber=telephoneNumber;
         this.membershipDate=membershipDate;
         this.password=password;
+        this.type = type;
     }
 
     public User() {

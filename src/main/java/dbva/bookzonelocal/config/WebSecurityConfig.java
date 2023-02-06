@@ -31,7 +31,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .authenticated()
                 .and()
                 .formLogin()
-//                .loginPage("/login").permitAll()
+                .loginPage("/login").permitAll()
                 .failureUrl("/login?error=BadCredentials")
                 .defaultSuccessUrl("/books", true)
                 .and()
@@ -48,15 +48,15 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.inMemoryAuthentication()
-                .withUser("david")
-                .password(passwordEncoder.encode("ds"))
-                .authorities("ROLE_USER")
-                .and()
-                .withUser("admin")
-                .password(passwordEncoder.encode("admin"))
-                .authorities("ROLE_ADMIN");
-//        auth.authenticationProvider(authenticationProvider);
+//        auth.inMemoryAuthentication()
+//                .withUser("david")
+//                .password(passwordEncoder.encode("ds"))
+//                .authorities("ROLE_USER")
+//                .and()
+//                .withUser("admin")
+//                .password(passwordEncoder.encode("admin"))
+//                .authorities("ROLE_ADMIN");
+        auth.userDetailsService(this.userDetailsService);
     }
 
 
